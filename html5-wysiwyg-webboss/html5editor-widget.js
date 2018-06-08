@@ -13,6 +13,7 @@
  * Check compatibility: https://codepen.io/netsi1964/full/QbLLGW
  *
  * DEPENDENCIES: jQuery UI for resizable
+ *               FontAwesome for the toolbar icons
  */
 
 /*
