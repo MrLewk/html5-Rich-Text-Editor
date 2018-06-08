@@ -1,0 +1,162 @@
+/**
+ * Created by PhpStorm.
+ * User: Overlord
+ * Date: 01/11/2017
+ * Time: 12:14 AM
+ */
+/*.toolbar, #cancelEdit, #saveEdit, #saveNoti{
+    display: none;
+}*/
+a, .btn {
+    cursor: pointer;
+}
+.default-html5editor ul {
+    list-style: initial;
+}
+
+.default-html5editor {
+    min-height: 150px;
+    overflow: auto;
+    padding: 1em;
+    margin: 0.5em 0;
+    resize: vertical;
+    outline: none;
+    height:auto;
+    border:solid 1px #ccc;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+div[class^="toolbar-"] {
+    text-align: center;
+}
+
+div[class^="toolbar-"] a,
+.fore-wrapper,
+.back-wrapper {
+    border: 1px solid #AAA;
+    background: #FFF;
+    font-family: 'Candal', serif;
+    font-size: 16px;
+    border-radius: 1px;
+    color: black;
+    padding: 5px;
+    width: auto;
+    margin: 1px;
+    margin-top: 5px;
+    display: inline-block;
+    text-decoration: none;
+    box-shadow: 0 1px 0 #CCC;
+}
+
+div[class^="toolbar-"] a:hover,
+.fore-wrapper:hover,
+.back-wrapper:hover {
+    background: #f2f2f2;
+    border-color: #8c8c8c;
+}
+
+a[class^="palette-item-"] {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+/*
+a[data-command='redo'],
+a[data-command='strikeThrough'],
+a[data-command='justifyFull'],
+a[data-command='insertOrderedList'],
+a[data-command='outdent'],
+a[data-command='superscript'],
+a[data-command='h3'],
+a[data-command='insertimage'],
+a[data-command='blockquote'] {
+    margin-right: 5px;
+    border-radius: 0 3px 3px 0;
+}
+
+a[data-command='p'],
+a[data-command='undo'],
+.fore-wrapper,
+a[data-command='justifyLeft'],
+a[data-command='insertUnorderedList'],
+a[data-command='indent'],
+a[data-command='h1'],
+a[data-command='createlink'],
+a[data-command='subscript'] {
+    border-radius: 3px 0 0 3px;
+}*/
+
+a.palette-item {
+    height: 1em;
+    border-radius: 3px;
+    margin: 2px;
+    width: 1em;
+    border: 1px solid #CCC;
+}
+
+a.palette-item:hover {
+    border: 1px solid #CCC;
+    box-shadow: 0 0 3px #333;
+}
+
+.fore-palette,
+.back-palette {
+    display: none;
+}
+
+.fore-wrapper,
+.back-wrapper {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.fore-wrapper:hover .fore-palette,
+.back-wrapper:hover .back-palette {
+    display: block;
+    float: left;
+    position: absolute;
+    padding: 3px;
+    width: 160px;
+    background: #FFF;
+    border: 1px solid #e0e0e0;
+    box-shadow: 2px 2px 1px #7d7d7d78;
+    min-height: 70px;
+    max-height: 200px;
+    overflow: auto;
+    font-family: sans-serif;
+}
+
+.fore-palette b,
+.back-palette b{
+    display: block;
+}
+
+.fore-palette a,
+.back-palette a {
+    background: #FFF;
+    margin-bottom: 2px;
+}
+
+.default-html5editor blockquote {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-left: 5px solid #CCCCCC;
+    padding: 0.5em 10px;
+    text-align: justify;
+}
+
+.default-html5editor a {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.default-html5editor p {
+    margin: 0.3em 0;
+}

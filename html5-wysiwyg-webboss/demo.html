@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Editor Demo</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+    <script src="https://use.fontawesome.com/de90cce68d.js"></script>
+    <script src="html5editor-widget.js"></script>
+    <link rel="stylesheet" href="html5editor-styles.css">
+    <style>
+        html {
+            font-family: sans-serif;
+            font-size: 16px;
+            background: #E0E0E0;
+        }
+
+        body {
+            width: 940px;
+            padding: 0.5em;
+            margin: 0 auto;
+        }
+
+        pre, xmp, plaintext, listing {
+            display: block;
+            font-family: monospace;
+            white-space: pre;
+            padding: 0.3em;
+            overflow-x: auto;
+        }
+
+        code, .code {
+            font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif;
+            background-color: #EFF0F1;
+            white-space: pre-wrap;
+            padding: 1px 5px;
+            color: #7D2727;
+        }
+    </style>
+</head>
+<body>
+
+<h1>HTML5 Rich Text Demo</h1>
+
+<h2>Installation</h2>
+Put this in your <code>&lt;head&gt;</code>:
+<pre style="background-color:#2B2B2B;color:#E6E1DC;font-family:'Courier New';font-size:9.0pt;">
+    &lt;<span style="color:#E8BF6A;">link rel=</span><span style="color:#A5C261;font-weight:bold;">"stylesheet" </span><span style="color:#E8BF6A;">href=</span><span style="color:#A5C261;font-weight:bold;">"html5-wysiwyg-webboss/html5editor-styles.css"</span>&gt;
+    &lt;<span style="color:#e8bf6a;">script src=</span><span style="color: rgb(165, 194, 97);">"html5-wysiwyg-webboss/html5editor-widget.js"</span>&gt;&lt;/<span style="color:#e8bf6a;">script</span>&gt;
+</pre>
+
+And then create a <code>DIV</code> with the ID or CLASS name with the same name you set in the jQuery selector variable:
+<pre style="background-color:#2B2B2B;color:#E6E1DC;font-family:'Courier New';font-size:9.0pt;">
+&lt;<span style="color:#E8BF6A;">script</span>&gt;
+<span style="color:#d0d0ff;">$</span>(<span style="color:#a5c261;">'.</span><span style="color:#e8bf6a;">html5editor</span><span style="color:#a5c261;">'</span>).<span style="color:#d0d0ff;">html5editor</span>({<br>    <span style="color:#d0d0ff;">editorName</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">'ed_demo'</span>,<br>    <span style="color:#d0d0ff;">theme</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">"default"</span>,<br>    <span style="color:#d0d0ff;">toolbarSize</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">"full"</span>,<br>    <span style="color:#d0d0ff;">createInput</span><span style="color:#cc7833;">: true</span>,<br>    <span style="color:#d0d0ff;">inputName</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">"demoEditor"</span>,<br>    <span style="color:#d0d0ff;">height</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">400<br></span>});
+&lt;/<span style="color:#E8BF6A;">script</span>&gt;
+</pre>
+
+<h2>Custom Toolbars</h2>
+
+You can define a custom toolbar by creating an array of button options:
+<pre style="background-color:#2b2b2b;color:#e6e1dc;font-family:'Courier New';font-size:9.0pt;">&lt;<span style="color:#e8bf6a;">script</span>&gt;<br>    <span style="color:#d0d0ff;">$</span>(<span
+        style="color:#a5c261;">'.</span><span style="color:#e8bf6a;">html5editor</span><span style="color:#a5c261;">'</span>).<span style="color:#d0d0ff;">html5editor</span>({<br>        <span
+        style="color:#d0d0ff;">editorName</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">'ed_demo'</span>,<br>        <span style="color:#d0d0ff;">theme</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">"default"</span>,<br>        <span style="color:#d0d0ff;">toolbarSize</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">"custom"</span>,<br>        <span style="color:#d0d0ff;">toolbar</span><span style="color:#cc7833;">: </span>[<span style="color:#a5c261;">'New'</span>, <span style="color:#a5c261;">'Undo'</span>, <span style="color:#a5c261;">'Redo'</span>, <span style="color:#a5c261;">'Bold'</span>, <span style="color:#a5c261;">'Italics'</span>, <span style="color:#a5c261;">'Underline'</span>, <span style="color:#a5c261;">'Strike Through'</span>, <span style="color:#a5c261;">'Align Left'</span>, <span style="color:#a5c261;">'Align Center'</span>, <span style="color:#a5c261;">'Align Right'</span>, <span style="color:#a5c261;">'Justify'</span>, <span style="color:#a5c261;">'Bullet List'</span>, <span style="color:#a5c261;">'Numbered List'</span>, <span style="color:#a5c261;">'H1'</span>, <span style="color:#a5c261;">'H2'</span>, <span style="color:#a5c261;">'H3'</span>, <span style="color:#a5c261;">'Paragraph'</span>, <span style="color:#a5c261;">'Link'</span>, <span style="color:#a5c261;">'Unlink'</span>, <span style="color:#a5c261;">'Image'</span>, <span style="color:#a5c261;">'HTML'</span>, <span style="color:#a5c261;">'Remove Formatting'</span>, <span style="color:#a5c261;">'Reset'</span>, <span style="color:#a5c261;">'View Source'</span>],<br>        <span style="color:#d0d0ff;">createInput</span><span style="color:#cc7833;">: true</span>,<br>        <span style="color:#d0d0ff;">inputName</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">"demoEditor"</span>,<br>        <span style="color:#d0d0ff;">height</span><span style="color:#cc7833;">: </span><span style="color:#a5c261;">400<br></span><span style="color:#a5c261;">    </span>});<br>&lt;/<span style="color:#e8bf6a;">script</span>&gt;</pre>
+
+
+<h2>Settings</h2>
+<ul>
+    <li><code>editorName</code> - Element selector</li>
+    <li><code>path</code> - Relative path to the plugin installation</li>
+    <li><code>theme</code> - CSS theme name (only <q>default</q> available as standard)</li>
+    <li><code>toolbarSize</code> - <q>full</q> or <q>mini</q> or <q>custom</q></li>
+    <li><code>toolbar</code> - If <code>toolbarSize</code> is set to <q>custom</q>, create an array of buttons here from the following:
+        <blockquote><br><code>'New', 'Select All', 'Undo', 'Redo', 'Text Colour', 'Highlight Colour', 'Bold', 'Italics', 'Underline', 'Strike Through', 'Align Left', 'Align Center', 'Align', ' Right', 'Justify', 'Indent', 'Outdent', 'Bullet List', 'Numbered List', 'H1', 'H2', 'H3', 'Paragraph', 'Link', 'Unlink', 'Image', 'Paragraph', 'Blockquote', 'HR', 'Subscript', 'Superscript', 'HTML', 'Remove Formatting', 'Reset', 'Print', 'View Source'</code></blockquote></li>
+    <li><code>createInput</code> - <code>true/false</code>: This will create a hidden input and copy all editor content into it on keyup and blur so that you can pass the data via
+        <code>POST/GET</code></li>
+    <li><code>inputName</code> - The input name of the above hidden input so you can retrieve the <code>POST/GET</code> data</li>
+    <li><code>colorPalette</code> - Array of colour values (array can be #HEX, RGB() or ColourName)</li>
+    <li><code>width / height</code> - Width and Height of editor (either by px of %)</li>
+</ul>
+
+<h2>Dependancies</h2>
+<ul>
+    <li>jQuery</li>
+    <li>jQuery UI</li>
+    <li>Font Awesome</li>
+</ul>
+
+<h2>Support</h2>
+Supported by most modern browsers. Partial support for most common functions (ie. bold, italic, underline) in IE.
+
+<h2>License</h2>
+MIT
+<br>
+Version 1.1
+<br>
+Last updated: 8th June 2018
+
+<h2>Known issues/To Do</h2>
+<ul>
+    <li>Add localStorage to save draft content</li>
+    <li>Make jQuery UI dialog for nicer image and URL inputs</li>
+    <li>Add new CSS theme options</li>
+    <li>Create Table insert options</li>
+    <li>Add Image and Table editing options</li>
+</ul>
+
+<h2>Copyright</h2>
+2018 Luke Wilson/WebBoss Ltd
+<br>
+<a href="https://github.com/MrLewk" target="_blank">Github</a> |
+<a href="https://webboss.io" target="_blank">WebBoss.io</a> |
+<a href="https://webbosswebsites.com" target="_blank">WebBoss Websites</a>
+
+<hr>
+
+<h2>Full Example</h2>
+
+<div class="html5editor">
+    <h1>Tu enim ista lenius, hic Stoicorum more nos vexat.</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nihilo magis. Primum quid tu dicis breve? <strong>Maximus dolor, inquit, brevis est.</strong>Quod quidem iam fit etiam in Academia.<i>Que
+                                                                                                                                                                                                      Manilium,
+                                                                                                                                                                                                      ab
+                                                                                                                                                                                                      iisque
+                                                                                                                                                                                                      M.</i>
+       Sed residamus, inquit, si placet. Duo Reges: constructio interrete. Sed tamen omne, quod de re bona dilucide dicitur, mihi praeclare dici videtur. Hunc vos beatum; Habes, inquam, Cato, formam
+       eorum, de quibus loquor, <a href="#">philosophorum</a>.</p>
+    <h2>Quam ob rem tandem, inquit, non satisfacit?</h2>
+    <p>Nam memini etiam quae nolo, oblivisci non possum quae volo. Octavio fuit, cum illam severitatem in eo filio adhibuit, quem in adoptionem D. Est, ut dicis, inquam.</p>
+    <blockquote cite="http://loripsum.net">Epicurus autem cum in prima commendatione voluptatem dixisset, si eam, quam Aristippus, idem tenere debuit ultimum bonorum, quod ille;</blockquote>
+    <ol>
+        <li>Illud non continuo, ut aeque incontentae.</li>
+        <li>Vide, quantum, inquam, fallare, Torquate.</li>
+        <li>Laelius clamores sofw ille so lebat Edere compellans gumias ex ordine nostros.</li>
+    </ol>
+    <p>Nam, ut sint illa vendibiliora, haec uberiora certe sunt. Dicam, inquam, et quidem discendi causa magis, quam quo te aut Epicurum reprehensum velim. Nam adhuc, meo fortasse vitio, quid ego
+       quaeram non perspicis. Videsne quam sit magna dissensio? Sin dicit obscurari quaedam nec apparere, quia valde parva sint, nos quoque concedimus; Non dolere, inquam, istud quam vim habeat postea
+       videro; Ut nemo dubitet, eorum omnia officia quo spectare, quid sequi, quid fugere debeant? Dulce amarum, leve asperum, prope longe, stare movere, quadratum rotundum.</p>
+    <p>Quamquam tu hanc copiosiorem etiam soles dicere. Si quidem, inquit, tollerem, sed relinquo. Mihi enim satis est, ipsis non satis. <strong>Quod totum contra est.</strong> Huic mori optimum esse
+       propter desperationem sapientiae, illi propter spem vivere. Nunc ita separantur, ut disiuncta sint, quo nihil potest esse perversius. <i>Tum Triarius: Posthac quidem, inquit, audacius.</i></p>
+    <h3>Quaerimus enim finem bonorum.</h3>
+    <p>Quae fere omnia appellantur uno ingenii nomine, easque virtutes qui habent, ingeniosi vocantur. <i>Hoc sic expositum dissimile est superiori.</i> Ratio enim nostra consentit, pugnat oratio.
+       Obsecro, inquit, Torquate, haec dicit Epicurus?</p>
+    <ul>
+        <li>Sed finge non solum callidum eum, qui aliquid improbe faciat, verum etiam praepotentem, ut M.</li>
+        <li>Non pugnem cum homine, cur tantum habeat in natura boni;</li>
+        <li>Unum nescio, quo modo possit, si luxuriosus sit, finitas cupiditates habere.</li>
+        <li>Nunc de hominis summo bono quaeritur;</li>
+    </ul>
+</div>
+<script>
+    $('.html5editor').html5editor({
+        editorName: 'ed_demo',
+        theme: "default",
+        toolbarSize: "full",
+        createInput: true,
+        inputName: "demoEditor",
+        height: 400
+    });
+</script>
+</body>
+</html>
